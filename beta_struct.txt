@@ -1,0 +1,37 @@
+para crear una REQUEST y mostrar su resultado:
+PREPARE REQUEST{
+    HEADERS{
+        APPLICATION-CONTENT: ""
+        SERVER: ""
+        LAST-MODIFIED: ""
+        ETAG:  ""
+        BYTES-SENDED: ""
+        CONTENT-LENTGH: int
+        CONTENT-TYPE: text/html
+    }
+    CONTENT{
+        contenido....
+    }
+} -> SEND REQUEST TO -> (HOST)
+
+
+ANALYZE REQUEST -> (enpoint){
+    {GET STATUS CODE: [(STATUS CODE AQUI)]
+    GET SCHEME STATUS: (HTTP/HTTPS)
+    GET METHOD AVAILABLE: (GET/POST/PUT/PATCH/DELETE)
+    GET HEADERS,
+    GET BODY}
+    {IF STATUS IS 200->{
+        SHOW HEADERS,
+        SHOW METHOD AVAILABLE,
+        SHOW BODY
+    }}
+}
+
+
+
+FOR ALL REQUEST FROM -> (HOST), EXTRACT{
+    FROM HEADERS, EXTRACT{
+        METHOD, HOST, CONNECTION, LANGUAGES, USER-AGENT
+    }
+}
